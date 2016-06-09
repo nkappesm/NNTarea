@@ -1,27 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Rounds</h1>
+<h3>Rounds</h3>
+
+<%= link_to 'New Player', new_player_path %>
 
 <table>
   <thead>
     <tr>
+      <th>Player</th>
+      <th>Bet Amount</th>
+      <th>Bet Value</th>
       <th>Result</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @rounds.each do |round| %>
+    <% @results.each do |result| %>
       <tr>
-        <td><%= round.result %></td>
+        <td><%= result.bet_amount %></td>
         <td><%= link_to 'Show', round %></td>
         <td><%= link_to 'Edit', edit_round_path(round) %></td>
         <td><%= link_to 'Destroy', round, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+    <% end %> 
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Round', new_round_path %>
+<!--<%= link_to 'New Round', new_round_path %>-->

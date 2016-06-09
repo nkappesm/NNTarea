@@ -5,8 +5,9 @@ class RoundsController < ApplicationController
   # GET /rounds.json
   def index
     @rounds = Round.all
+    @results = Result.all
   end
-
+=begin
   # GET /rounds/1
   # GET /rounds/1.json
   def show
@@ -60,7 +61,7 @@ class RoundsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+=end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_round
