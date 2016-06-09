@@ -5,13 +5,17 @@ class RoundsController < ApplicationController
   # GET /rounds.json
   def index
     @rounds = Round.all
-    @results = Result.all
   end
 
   # GET /rounds/new
   def new
     @round = Round.play_round
     @round.save
+    @round.players.new()
+    @round.round_players.each do |r|
+
+    
+    end
 =begin    @players.where(active: true).find_each do |p|
       p.rounds << Round.find(params[:round_id])
       p.save

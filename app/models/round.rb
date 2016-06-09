@@ -1,6 +1,6 @@
 class Round < ActiveRecord::Base
 	has_many :round_players
-	has_many :players, through: :results
+	has_many :players, through: :round_players
 
 	def self.play_round
 	    buff = rand(0..100)

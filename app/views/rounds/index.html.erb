@@ -16,19 +16,17 @@
     </tr>
   </thead>
 
-  <tbody>
-    <!-- Need to cycle through rounds in the results table -->
-    <% @results.each do |result| %>
+<tbody>
+    <!--Need to cycle through rounds in the round_player table-->
+    <% @rounds.each do |rp| %>
       <tr>
-        <td><%= result.bet_amount %></td>
-        <td><%= link_to 'Show', round %></td>
-        <td><%= link_to 'Edit', edit_round_path(round) %></td>
-        <td><%= link_to 'Destroy', round, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= rp.id %></td>
       </tr>
     <% end %> 
   </tbody>
 </table>
 
-<br>
 
-<!--<%= link_to 'New Round', new_round_path %>-->
+
+<%= link_to 'New Round', new_round_path %>
+
