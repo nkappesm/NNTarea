@@ -8,7 +8,7 @@ class Result < ActiveRecord::Base
 			ba = player.money
 		else
 			buff = rn.rand(0..1)
-			if buff = 0
+			if buff == 0
 				ba = (player.money*8)/100
 			else
 				ba = (player.money*15)/100

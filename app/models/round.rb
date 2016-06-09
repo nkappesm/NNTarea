@@ -1,10 +1,10 @@
 class Round < ActiveRecord::Base
-	has_many :result
-	has_many :player, through: :results
+	has_many :results
+	has_many :players, through: :results
 
 	def self.play_round
-	    rn = Random.new
-	    buff = rn.rand(0..100)
+	    buff = rand(0..100)
+	    puts "yay"
 	    if buff <= 2
 	    	return Round.new(result: "verde")
 	    elsif buff <= 51
