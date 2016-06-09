@@ -1,4 +1,4 @@
-class Result < ActiveRecord::Base
+class RoundPlayer < ActiveRecord::Base
 	belongs_to :player
 	belongs_to :round
 

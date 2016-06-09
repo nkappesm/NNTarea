@@ -1,5 +1,5 @@
 class Round < ActiveRecord::Base
-	has_many :results
+	has_many :round_players
 	has_many :players, through: :results
 
 	def self.play_round
