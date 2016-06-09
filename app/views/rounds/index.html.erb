@@ -2,7 +2,8 @@
 
 <h3>Rounds</h3>
 
-<%= link_to 'New Player', new_player_path %>
+<%= link_to 'Active Players', players_path %>
+<%= link_to 'Inactive Players', players_path %>
 
 <table>
   <thead>
@@ -16,6 +17,7 @@
   </thead>
 
   <tbody>
+    <!-- Need to cycle through rounds in the results table -->
     <% @results.each do |result| %>
       <tr>
         <td><%= result.bet_amount %></td>

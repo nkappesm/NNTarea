@@ -7,6 +7,19 @@ class RoundsController < ApplicationController
     @rounds = Round.all
     @results = Result.all
   end
+
+  # GET /rounds/new
+  def new
+    @round = Round.play_round
+    @round.save
+=begin    @players.where(active: true).find_each do |p|
+      p.rounds << Round.find(params[:round_id])
+      p.save
+    end
+=end
+    redirect_to rounds_url
+  end
+
 =begin
   # GET /rounds/1
   # GET /rounds/1.json
