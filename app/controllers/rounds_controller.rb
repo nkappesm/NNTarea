@@ -15,9 +15,12 @@ class RoundsController < ApplicationController
     @players.where(active: true).each do |pl|
       @round.round_players.create(player: pl)
       @round.round_players.each do |rp|
-        rva = RoundPlayer.obtain_round_results(pl)
+        rva = RoundPlayer.obtain_bets(pl)
         rp.bet_amount = rva[0]
+        wl = RoundPlayer.obtain_results(rva[1], @round.result)
         rp.bet_value = rva[1]
+        pl.money = (pl.money + rva[0]*(wl - 1))
+        pl.save
         rp.save
       end
     end
