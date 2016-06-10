@@ -11,16 +11,16 @@ class RoundsController < ApplicationController
   def new
     @round = Round.play_round
     @round.save
-    @round.players.new()
-    @round.round_players.each do |r|
-
-    
+    @players = Player.all
+    @players.where(active: true).each do |pl|
+      @round.round_players.create(player: pl)
+      @round.round_players.each do |rp|
+        rva = RoundPlayer.obtain_round_results(pl)
+        rp.bet_amount = rva[0]
+        rp.bet_value = rva[1]
+        rp.save
+      end
     end
-=begin    @players.where(active: true).find_each do |p|
-      p.rounds << Round.find(params[:round_id])
-      p.save
-    end
-=end
     redirect_to rounds_url
   end
 
