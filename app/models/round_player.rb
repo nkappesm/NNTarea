@@ -9,15 +9,10 @@ class RoundPlayer < ActiveRecord::Base
 			buff = rand(2)
 			if buff == 0
 				ba = (player.money*8)/100
-				print "Name: #{player.name} InitialM: #{player.money} bet: #{ba} real: "
-				print player.money*8/100
 			else
 				ba = (player.money*15)/100
-				print "Name: #{player.name} InitialM: #{player.money} bet: #{ba} real: "
-				print player.money*15/100
 			end
 		end
-
 	    buff = rand(101)
 	    if buff <= 2
 	      bv = "verde"
