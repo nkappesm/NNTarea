@@ -7,6 +7,11 @@ class RoundsController < ApplicationController
     @rounds = Round.all
   end
 
+  def show
+    Player.end_of_day
+    redirect_to rounds_url
+  end
+
   # GET /rounds/new
   def new
     @round = Round.play_round
@@ -90,7 +95,8 @@ class RoundsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_round
-      @round = Round.find(params[:id])
+      #@round = Round.find(params[:id])
+      redirect_to rounds_url
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
