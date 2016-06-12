@@ -7,13 +7,13 @@ class RoundsController < ApplicationController
     @rounds = Round.includes(:round_players).all
   end
 
-=begin
   # GET /rounds/new
   def new
     Round.play
     redirect_to rounds_url
   end
 
+=begin
   # GET /rounds/1
   # GET /rounds/1.json
   def show

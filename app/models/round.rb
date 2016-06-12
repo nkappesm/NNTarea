@@ -14,6 +14,8 @@ class Round < ActiveRecord::Base
 	end
 
 	def self.play
+		Delayed::Job.destroy_all
+		Player.end_of_day
 		round = Round.new_round
 	    round.save
 	    players = Player.all
@@ -42,7 +44,8 @@ class Round < ActiveRecord::Base
 	        rp.player.save
 	        rp.save
 	      end
-	    end
+	    end	
 	    self.delay(:run_at => 3.minutes.from_now).play
-	end
+		
+	end	
 end
