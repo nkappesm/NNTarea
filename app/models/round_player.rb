@@ -28,6 +28,8 @@ class RoundPlayer < ActiveRecord::Base
 		if res_color == "green"
 			if res_color == plv
 				return 15
+			else
+				return 0
 			end
 		elsif res_color == plv
 			return 2

@@ -13,9 +13,9 @@ class Player < ActiveRecord::Base
 		buff_t *= 60
 		buff_t += t.min
 		buff_t = (24*60) - buff_t
-		players = Player.all
-		players.each do |pl|
-			if (t.hour == 23 && t.minute >= 59) || (t.hour == 0 && t.minute <= 1)
+		if (t.hour == 23 && t.minute >= 59) || (t.hour == 0 && t.minute <= 1)
+			players = Player.all
+			players.each do |pl|			
 				pl.money += 10000
 				pl.active = true
 				pl.save

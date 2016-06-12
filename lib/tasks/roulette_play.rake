@@ -1,11 +1,9 @@
-=begin
 namespace :roulette do 
 	desc "Controls the roulette plays and updates"
-	task :round_play => :environment do
-		Round.start_roulette
+	task :flow_start => :environment do
+		Round.play
 	end
-	task :day_update => :environment do
+	task :end_update_start => :environment do
 		Player.end_of_day
-	end
+	end		
 end
-=end
