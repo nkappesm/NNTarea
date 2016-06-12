@@ -5,6 +5,8 @@ class Player < ActiveRecord::Base
 	validates :name, presence: true, length: { maximum: 12 }
 	validates :money, presence: true
 
+	before_update :player_state
+
 	def self.end_of_day()
 		players = Player.all
 		players.each do |pl|
@@ -12,5 +14,14 @@ class Player < ActiveRecord::Base
 			pl.active = true
 			pl.save
 		end
+	end
+
+	def player_state
+		if self.money <= 0
+			self.active = false
+		elsif self.money > 0
+			self.active = true
+		end
+		true
 	end
 end

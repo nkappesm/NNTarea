@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160609233502) do
+ActiveRecord::Schema.define(version: 20160612161815) do
 
   create_table "players", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -21,22 +21,15 @@ ActiveRecord::Schema.define(version: 20160609233502) do
     t.boolean  "active",                 default: true
   end
 
-  create_table "results", force: :cascade do |t|
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "player_id",  limit: 4
-    t.integer  "round_id",   limit: 4
-    t.integer  "bet_amount", limit: 4
-    t.string   "bet_value",  limit: 255
-  end
-
   create_table "round_players", force: :cascade do |t|
-    t.integer  "player_id",  limit: 4
-    t.integer  "round_id",   limit: 4
-    t.string   "bet_value",  limit: 255
-    t.integer  "bet_amount", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "player_id",   limit: 4
+    t.integer  "round_id",    limit: 4
+    t.string   "bet_value",   limit: 255
+    t.integer  "bet_amount",  limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "bet_result",  limit: 255
+    t.integer  "round_money", limit: 4
   end
 
   create_table "rounds", force: :cascade do |t|

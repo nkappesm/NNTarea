@@ -15,17 +15,17 @@ class RoundPlayer < ActiveRecord::Base
 		end
 	    buff = rand(101)
 	    if buff <= 2
-	      bv = "verde"
+	      bv = "green"
 	    elsif buff <= 51
-	      bv = "rojo"
+	      bv = "red"
 	    else
-	      bv = "negro"
+	      bv = "black"
 	    end
 	    return [ba, bv]
 	end
 
 	def self.obtain_results(plv, res_color)
-		if res_color == "verde"
+		if res_color == "green"
 			if res_color == plv
 				return 15
 			end

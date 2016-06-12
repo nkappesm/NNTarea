@@ -3,8 +3,6 @@
 <h3>Rounds</h3>
 
 <%= link_to 'Active Players', players_path %>
-<%= link_to 'Inactive Players', players_path %>
-<%= link_to 'Force Round', new_round_path %>
 
 
 <% @rounds.each do |r| %>
@@ -12,21 +10,35 @@
     <thead>
       <tr>
         <th>Round: <%= r.id   %></th>
-        <th>Roulette color: <%= r.result%></th>
+        <th>Color: <%= r.result%></th>
       </tr>
     </thead>
     <table>
-      
+      <% i = 0 %>
       <% r.round_players.each do |rp| %>
-        <tr>
-          <td><%= "Player: #{rp}" %></td>
-          <td><%= "Color: #{rp.bet_value}" %></td>
-          <td><%= "Bet: #{rp.bet_amount}" %></td>
-          <td><%= "Result: #{rp.player}" %></td>
-          <td><%= "Player: #{rp.player}" %></td>
+        <tr>          
+          <% if rp.player_id != nil%>
+            <td><%= "Player: #{rp.player.name}" %></td>
+            <td><%= "Color: #{rp.bet_value}" %></td>
+            <td><%= "Bet: #{rp.bet_amount}" %></td>
+            <% if rp.bet_result == "Big winner" %>
+              <% br = rp.bet_amount*14 %>
+              <td><%= "Won: #{br}" %></td>
+            <% elsif rp.bet_result == "Winner" %>
+              <td><%= "Won: #{rp.bet_amount}" %></td>
+            <% else %>
+              <td><%= "Lost: #{rp.bet_amount}" %></td>
+            <% end %>
+            <td><%= "Player Money: #{rp.round_money}" %></td>
+            <% i += 1 %>
+          <% end %>          
         </tr>
       <% end %>
-      
+      <tr>
+        <% if i == 0 %>
+              <%= "No active players" %>
+        <% end %>
+      </tr>
     </table>
   </table>
 <% end %>
