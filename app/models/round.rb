@@ -13,7 +13,7 @@ class Round < ActiveRecord::Base
 	    end
 	end
 
-	def play
+	def self.play
 		round = Round.new_round
 	    round.save
 	    players = Player.all
@@ -43,10 +43,6 @@ class Round < ActiveRecord::Base
 	        rp.save
 	      end
 	    end
-	    self.delay(:run_at => 1.minute.from_now).play
-	end
-
-	def self.start_roulette
-		new.play
+	    self.delay(:run_at => 3.minutes.from_now).play
 	end
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :rounds do
-    post "start_r" => "rounds#start_r", on: :collection
+    post "start" => "rounds#start", on: :collection
   end
   resources :players
   # The priority is based upon order of creation: first created -> highest priority.

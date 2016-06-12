@@ -8,8 +8,9 @@ class RoundsController < ApplicationController
   end
 
   # GET /rounds/new
-  def start_r
-    Round.start_roulette
+  def new
+    Round.play
+    redirect_to rounds_url
   end
 
 =begin
