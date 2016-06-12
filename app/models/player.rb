@@ -7,7 +7,7 @@ class Player < ActiveRecord::Base
 
 	before_update :player_state
 
-	def self.end_of_day()
+	def self.end_of_day
 		players = Player.all
 		players.each do |pl|
 			pl.money += 10000

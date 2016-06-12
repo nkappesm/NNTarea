@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
-
+ruby '2.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
+# Puma webserver
+gem 'puma'
 # Use mysql as the database for Active Record
 group :development do
 	gem 'mysql2', '>= 0.3.13', '< 0.5'
@@ -12,6 +14,8 @@ group :production do
 	gem 'pg'
 	gem 'rails_12factor'
 end
+# Delayed Jobs
+gem 'delayed_job_active_record'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
