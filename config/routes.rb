@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :rounds do
-    get "play" => "rounds#play", on: :member
-  end
+  resources :rounds
   resources :players
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

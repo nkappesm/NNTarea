@@ -64,11 +64,16 @@ class PlayersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_player
-      @player = Player.find(params[:id])
+      begin
+        @player = Player.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to players_url
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
       params.require(:player).permit(:name, :money)
     end
+  
 end

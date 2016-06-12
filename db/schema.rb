@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612163757) do
+ActiveRecord::Schema.define(version: 20160612170013) do
 
   create_table "players", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20160612163757) do
     t.datetime "updated_at",                             null: false
     t.boolean  "active",                 default: true
   end
+
+  add_index "players", ["name"], name: "index_players_on_name", unique: true, using: :btree
 
   create_table "round_players", force: :cascade do |t|
     t.integer  "player_id",   limit: 4

@@ -7,45 +7,12 @@ class RoundsController < ApplicationController
     @rounds = Round.includes(:round_players).all
   end
 
-  def show
-  end
-
   # GET /rounds/new
   def new
-    @round = Round.play_round
-    @round.save
-    @players = Player.all
-    @players.where(active: true).each do |pl|
-      @round.round_players.create(player: pl)
-    end
-    @round.round_players.each do |rp|
-      if rp.player.active == true
-        rp.bet_name = rp.player.name
-        rva = RoundPlayer.obtain_bets(rp.player)
-        rp.bet_amount = rva[0]
-        wl = RoundPlayer.obtain_results(rva[1], @round.result)
-        if wl == 15
-          rp.bet_result = "Big winner"
-        elsif wl == 2
-          rp.bet_result = "Winner"
-        else
-          rp.bet_result = "Looser"
-        end
-        rp.bet_value = rva[1]
-        rp.player.money = (rp.player.money + rva[0]*(wl - 1))
-        rp.round_money = rp.player.money
-        if rp.player.money <= 0
-          rp.player.active = false
-        end
-        rp.player.save
-        rp.save
-      end
-    end
+    Round.play
     redirect_to rounds_url
   end
 
-  def play
-  end
 =begin
   # GET /rounds/1
   # GET /rounds/1.json
