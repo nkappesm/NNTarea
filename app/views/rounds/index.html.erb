@@ -18,7 +18,7 @@
       <% r.round_players.each do |rp| %>
         <tr>          
           <% if rp.player_id != nil%>
-            <td><%= "Player: #{rp.player.name}" %></td>
+            <td><%= "Player: #{rp.bet_name}" %></td>
             <td><%= "Color: #{rp.bet_value}" %></td>
             <td><%= "Bet: #{rp.bet_amount}" %></td>
             <% if rp.bet_result == "Big winner" %>

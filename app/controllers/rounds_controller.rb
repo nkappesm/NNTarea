@@ -20,6 +20,7 @@ class RoundsController < ApplicationController
     end
     @round.round_players.each do |rp|
       if rp.player.active == true
+        rp.bet_name = rp.player.name
         rva = RoundPlayer.obtain_bets(rp.player)
         rp.bet_amount = rva[0]
         wl = RoundPlayer.obtain_results(rva[1], @round.result)
