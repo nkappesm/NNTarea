@@ -14,7 +14,6 @@ class Round < ActiveRecord::Base
 	end
 
 	def self.play
-		Delayed::Job.destroy_all
 		round = Round.new_round
 	    round.save
 	    players = Player.all
